@@ -1,1 +1,4 @@
 /backend/venv-web-medwaste
+/backend/model/*
+!/backend/model/linux_load_model.sh
+!/backend/model/windows_load_model.ps1
