@@ -169,4 +169,4 @@ def classify4G():
 
 
 if __name__ == "__main__":
-    app.run(port=80,debug=False)
+    app.run(port=5001,debug=False)
