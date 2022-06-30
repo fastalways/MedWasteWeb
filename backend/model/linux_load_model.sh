@@ -1,5 +1,6 @@
 #!/bin/bash
-sudo apt-get install zip unzip
+sudo apt-get install zip unzip  -y
+sudo apt-get install ffmpeg libsm6 libxext6  -y
 echo 'Loading Model from https://assets.gezdev.com/model-ai/medical-waste/4G-EfficientNetB5-epoch2000.pb.zip'
 wget https://assets.gezdev.com/model-ai/medical-waste/4G-EfficientNetB5-epoch2000.pb.zip
 echo 'Loading Model from https://assets.gezdev.com/model-ai/medical-waste/41CLASSES-EfficientNetB5-epoch2000.pb.zip'
