@@ -6,4 +6,6 @@ server {
         proxy_set_header   Host $http_host;
         proxy_pass         "http://127.0.0.1:5001";
     }
+    
+    add_header Access-Control-Allow-Origin *;
 }
