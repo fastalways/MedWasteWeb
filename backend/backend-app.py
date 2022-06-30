@@ -48,7 +48,8 @@ app.config['JSON_SORT_KEYS'] = False
 CORS(app)
 
 @app.route('/')
-@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
+#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
+@cross_origin()
 def show_index():
     str =  """<!DOCTYPE html>
 <html>
@@ -132,9 +133,9 @@ def yolov4_41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add("Access-Control-Allow-Origin", "*")
-        resp.headers.add("Access-Control-Allow-Headers", "*")
-        resp.headers.add("Access-Control-Allow-Methods", "*")
+        #resp.headers.add("Access-Control-Allow-Origin", "*")
+        #resp.headers.add("Access-Control-Allow-Headers", "*")
+        #resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
@@ -186,9 +187,9 @@ def classify41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add("Access-Control-Allow-Origin", "*")
-        resp.headers.add("Access-Control-Allow-Headers", "*")
-        resp.headers.add("Access-Control-Allow-Methods", "*")
+        #resp.headers.add("Access-Control-Allow-Origin", "*")
+        #resp.headers.add("Access-Control-Allow-Headers", "*")
+        #resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
@@ -240,9 +241,9 @@ def classify4G():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add("Access-Control-Allow-Origin", "*")
-        resp.headers.add("Access-Control-Allow-Headers", "*")
-        resp.headers.add("Access-Control-Allow-Methods", "*")
+        #resp.headers.add("Access-Control-Allow-Origin", "*")
+        #resp.headers.add("Access-Control-Allow-Headers", "*")
+        #resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
