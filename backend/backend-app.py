@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from flask import Flask, flash, redirect, jsonify, request, url_for
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 from werkzeug.utils import secure_filename
 import tensorflow as tf
 from tensorflow import keras
@@ -40,10 +40,14 @@ NMS_THRESHOLD = 0.4
 COLORS = np.random.uniform(0, 255, size=(len(class_names_41classes), 3))
 
 app = Flask(__name__,static_url_path='/static')
+app.config['SECRET_KEY'] = 'Lady Gaga, Bradley Cooper - Shallow (from A Star Is Born) (Official Music Video)'
+app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.gezdev.com/"}})
 app.config['JSON_SORT_KEYS'] = False
 CORS(app)
 
 @app.route('/')
+@cross_origin(origin='medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
 def show_index():
     str =  """<!DOCTYPE html>
 <html>
@@ -96,6 +100,7 @@ def predictYolov4_41classes(im_path):
 
 
 @app.route('/yolov4_41', methods=['POST'])
+@cross_origin(origin='medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
 def yolov4_41():
     im_path = ''
     if 'file' not in request.files:
@@ -126,7 +131,7 @@ def yolov4_41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add('Access-Control-Allow-Origin', '*')
+        #resp.headers.add('Access-Control-Allow-Origin', '*')
         resp.status_code = 201
         return resp
     else:
@@ -147,6 +152,7 @@ def predictClassify_41classes(im_path):
 
 
 @app.route('/class41', methods=['POST'])
+@cross_origin(origin='medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
 def classify41():
     im_path = ''
     if 'file' not in request.files:
@@ -177,7 +183,7 @@ def classify41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add('Access-Control-Allow-Origin', '*')
+        #resp.headers.add('Access-Control-Allow-Origin', '*')
         resp.status_code = 201
         return resp
     else:
@@ -198,6 +204,7 @@ def predictClassify_4G(im_path):
 
 
 @app.route('/class4G', methods=['POST'])
+@cross_origin(origin='medwaste-ai.gezdev.com',headers=['Content- Type','Authorization'])
 def classify4G():
     im_path = ''
     if 'file' not in request.files:
@@ -228,7 +235,7 @@ def classify4G():
         return resp
     if success:
         resp = jsonify(predict_message)
-        resp.headers.add('Access-Control-Allow-Origin', '*')
+        #resp.headers.add('Access-Control-Allow-Origin', '*')
         resp.status_code = 201
         return resp
     else:
