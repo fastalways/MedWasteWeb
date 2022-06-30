@@ -93,7 +93,7 @@ def predictYolov4_41classes(im_path):
         label = "%s : %f" % (class_names_41classes[classid[0]], score)
         cv.rectangle(img, box, color, 20)
         cv.putText(img, label, (box[0], box[1]+box[3] - 30), cv.FONT_HERSHEY_SIMPLEX, 15, color, 15)
-        box_str = "{%d,%d,%d,%d}" % (box[0],box[1],box[2],box[3])
+        box_str = "{%d,%d,%d,%d}," % (box[0],box[1],box[2],box[3])
         predict_probs += "{%s : { %f : %s} }" % (class_names_41classes[int(classid)], score*100.0,box_str)
     time_now_hash = hash_str(str(datetime.now()))
     result_filepath = './static/'+time_now_hash+'pred.png'
