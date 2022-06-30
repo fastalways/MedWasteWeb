@@ -131,7 +131,9 @@ def yolov4_41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        #resp.headers.add('Access-Control-Allow-Origin', '*')
+        resp.headers.add("Access-Control-Allow-Origin", "*")
+        resp.headers.add("Access-Control-Allow-Headers", "*")
+        resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
@@ -183,7 +185,9 @@ def classify41():
         return resp
     if success:
         resp = jsonify(predict_message)
-        #resp.headers.add('Access-Control-Allow-Origin', '*')
+        resp.headers.add("Access-Control-Allow-Origin", "*")
+        resp.headers.add("Access-Control-Allow-Headers", "*")
+        resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
@@ -235,7 +239,9 @@ def classify4G():
         return resp
     if success:
         resp = jsonify(predict_message)
-        #resp.headers.add('Access-Control-Allow-Origin', '*')
+        resp.headers.add("Access-Control-Allow-Origin", "*")
+        resp.headers.add("Access-Control-Allow-Headers", "*")
+        resp.headers.add("Access-Control-Allow-Methods", "*")
         resp.status_code = 201
         return resp
     else:
