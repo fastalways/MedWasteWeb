@@ -41,7 +41,8 @@ COLORS = np.random.uniform(0, 255, size=(len(class_names_41classes), 3))
 
 app = Flask(__name__,static_url_path='/static')
 app.config['SECRET_KEY'] = 'Lady Gaga, Bradley Cooper - Shallow (from A Star Is Born) (Official Music Video)'
-cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.gezdev.com/"}})
+#cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.gezdev.com/"}})
+cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['JSON_SORT_KEYS'] = False
 CORS(app)
