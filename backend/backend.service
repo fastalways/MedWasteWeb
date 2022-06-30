@@ -1,0 +1,8 @@
+[Unit]
+After=network.service
+
+[Service]
+ExecStart=/home/ubuntu/MedWasteWeb/backend/backend-app.py
+
+[Install]
+WantedBy=default.target
