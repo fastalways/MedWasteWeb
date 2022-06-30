@@ -42,15 +42,15 @@ COLORS = np.random.uniform(0, 255, size=(len(class_names_41classes), 3))
 app = Flask(__name__,static_url_path='/static')
 app.config['SECRET_KEY'] = 'Lady Gaga, Bradley Cooper - Shallow (from A Star Is Born) (Official Music Video)'
 #cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.gezdev.com/"}})
-cors = CORS(app)
 app.config['CORS_ORIGINS'] = ['https://medwaste-ai.gezdev.com']
 app.config['CORS_HEADERS'] = 'Content-Type'
+cors = CORS(app)
 app.config['JSON_SORT_KEYS'] = False
 CORS(app)
 
 @app.route('/')
-@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
-#@cross_origin()
+#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+@cross_origin(headers=['Content-Type'])
 def show_index():
     str =  """<!DOCTYPE html>
 <html>
@@ -103,8 +103,8 @@ def predictYolov4_41classes(im_path):
 
 
 @app.route('/yolov4_41', methods=['POST'])
-@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
-#@cross_origin()
+#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+@cross_origin(headers=['Content-Type'])
 def yolov4_41():
     im_path = ''
     if 'file' not in request.files:
@@ -158,8 +158,8 @@ def predictClassify_41classes(im_path):
 
 
 @app.route('/class41', methods=['POST'])
-@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
-#@cross_origin()
+#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+@cross_origin(headers=['Content-Type'])
 def classify41():
     im_path = ''
     if 'file' not in request.files:
@@ -213,8 +213,8 @@ def predictClassify_4G(im_path):
 
 
 @app.route('/class4G', methods=['POST'])
-@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
-#@cross_origin()
+#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+@cross_origin()
 def classify4G():
     im_path = ''
     if 'file' not in request.files:
