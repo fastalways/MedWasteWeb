@@ -2,7 +2,7 @@
 After=network.service
 
 [Service]
-ExecStart=/home/ubuntu/MedWasteWeb/backend/backend-app.py
+ExecStart=/home/ubuntu/MedWasteWeb/backend/run_backend_service.sh
 
 [Install]
 WantedBy=default.target
