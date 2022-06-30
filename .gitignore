@@ -4,3 +4,5 @@
 !/backend/model/windows_load_model.ps1
 /backend/im_cache/*
 !/backend/im_cache/.gitkeep
+/backend/static/*
+!/backend/static/.gitkeep
