@@ -97,7 +97,7 @@ def predictYolov4_41classes(im_path):
     time_now_hash = hash_str(str(datetime.now()))
     result_filepath = './static/'+time_now_hash+'pred.png'
     cv.imwrite(result_filepath,img)
-    return_msg = "{ '."+ url_for('static', filename=time_now_hash+'pred.png')+"' : " + ' {' + predict_probs + '} }'
+    return_msg = "{ '"+ request.url_root + url_for('static', filename=time_now_hash+'pred.png')+"' : " + ' {' + predict_probs + '} }'
     return return_msg
 
 

@@ -136,7 +136,9 @@ readImage_yolov4_41 = (file) => {
 		   timeout: 10000,
 		   success : function(data) {
 			   console.log(data);
-			   document.querySelector("#result_yolov4_41").value = JSON.stringify(data);
+         res_json = JSON.stringify(data);
+			   document.querySelector("#result_yolov4_41").value = res_json;
+         document.querySelector("#file_name_yolov4_41").textContent = "<a href='"+Object.keys(data)[0]+"'>"+Object.keys(data)[0]+'</a>';
 		   }
 	});
   });
