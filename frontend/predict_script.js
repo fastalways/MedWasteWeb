@@ -140,7 +140,7 @@ readImage_yolov4_41 = (file) => {
 			   document.querySelector("#result_yolov4_41").value = data;
          var resObj = JSON.parse(data);
          var result_path = Object.keys(resObj)[0];
-         document.querySelector("#file_name_yolov4_41").textContent = "<a href='"+result_path+"'>"+result_path+'</a>';
+         document.querySelector("#file_name_yolov4_41").innerHTML = "<a href='"+result_path+"'>"+result_path+'</a>';
 		   }
 	});
   });
