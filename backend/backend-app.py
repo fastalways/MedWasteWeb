@@ -10,6 +10,7 @@ from tensorflow.keras.preprocessing import image
 import numpy as np
 import cv2 as cv
 import hashlib
+import json
 
 
 directory = os.getcwd()
@@ -99,7 +100,7 @@ def predictYolov4_41classes(im_path):
     result_filepath = './static/'+time_now_hash+'pred.png'
     cv.imwrite(result_filepath,img)
     return_msg = "{ '"+ request.url_root[:-1] + url_for('static', filename=time_now_hash+'pred.png')+"' : " + ' [' + predict_probs + '] }'
-    return return_msg
+    return json.dumps(json.loads(return_msg), indent=4)
 
 
 @app.route('/yolov4_41', methods=['POST'])
