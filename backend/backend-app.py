@@ -91,15 +91,18 @@ def predictYolov4_41classes(im_path):
     predict_probs = ''
     for (classid, score, box) in zip(classes, scores, boxes):
         color = COLORS[int(classid)]
-        label = "%s : %f" % (class_names_41classes[classid[0]], score)
+        label = "%s:%f" % (class_names_41classes[classid[0]], score)
         cv.rectangle(img, box, color, 20)
         cv.putText(img, label, (box[0], box[1]+box[3] - 30), cv.FONT_HERSHEY_SIMPLEX, 15, color, 15)
-        box_str = "'%d,%d,%d,%d'" % (box[0],box[1],box[2],box[3])
-        predict_probs += "{ 'objName':'%s', 'confRate':'%f', box:%s }," % (class_names_41classes[int(classid)], score*100.0,box_str)
+        box_str = '"%d,%d,%d,%d"' % (box[0],box[1],box[2],box[3])
+        predict_probs += '{"objName":"%s", "confRate":"%f", "box":%s},' % (class_names_41classes[int(classid)], score*100.0,box_str)
     time_now_hash = hash_str(str(datetime.now()))
     result_filepath = './static/'+time_now_hash+'pred.png'
     cv.imwrite(result_filepath,img)
-    return_msg = "{ '"+ request.url_root[:-1] + url_for('static', filename=time_now_hash+'pred.png')+"' : " + ' [' + predict_probs + '] }'
+    if(len(predict_probs)>=2):
+        predict_probs = predict_probs[:-1]
+    return_msg = '{"'+ request.url_root[:-1] + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
+    print(return_msg)
     return json.dumps(json.loads(return_msg), indent=4)
 
 
