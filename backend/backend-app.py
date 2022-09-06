@@ -93,7 +93,7 @@ def predictYolov4_41classes(im_path):
     for (classid, score, box) in zip(classes, scores, boxes):
         color = COLORS[int(classid)]
         label = "%s:%.2f%%" % (class_names_41classes[classid[0]],score*100.0)
-        cv.rectangle(img, box, color, 20)
+        cv.rectangle(img, box, color, img_height//250)
         cv.putText(img, label, (box[0], box[1]+box[3] - 30), cv.FONT_HERSHEY_SIMPLEX, img_height/200, color, img_height//250)
         box_str = '"%d,%d,%d,%d"' % (box[0],box[1],box[2],box[3])
         predict_probs += '{"objName":"%s", "confRate":"%f", "box":%s},' % (class_names_41classes[int(classid)], score*100.0,box_str)
