@@ -84,16 +84,17 @@ def hash_str(str):
 
 def predictYolov4_41classes(im_path):
     img = cv.imread(im_path)
-    height_factor = 0.5
-    width_factor = 0.5
-    img = cv.resize(img,(int(img.shape[0]/height_factor),int(img.shape[1]/width_factor)))
+    img_height = img.shape[0]
+    height_factor = 1.0
+    width_factor = 1.0
+    img = cv.resize(img,(int(img.shape[1]*width_factor),int(img.shape[0]*height_factor)))
     classes, scores, boxes = model_yolov4.detect(img, CONFIDENCE_THRESHOLD, NMS_THRESHOLD)
     predict_probs = ''
     for (classid, score, box) in zip(classes, scores, boxes):
         color = COLORS[int(classid)]
-        label = "%s:%f" % (class_names_41classes[classid[0]], score)
+        label = "%s:%.2f%%" % (class_names_41classes[classid[0]],score*100.0)
         cv.rectangle(img, box, color, 20)
-        cv.putText(img, label, (box[0], box[1]+box[3] - 30), cv.FONT_HERSHEY_SIMPLEX, 15, color, 15)
+        cv.putText(img, label, (box[0], box[1]+box[3] - 30), cv.FONT_HERSHEY_SIMPLEX, img_height/200, color, img_height//250)
         box_str = '"%d,%d,%d,%d"' % (box[0],box[1],box[2],box[3])
         predict_probs += '{"objName":"%s", "confRate":"%f", "box":%s},' % (class_names_41classes[int(classid)], score*100.0,box_str)
     time_now_hash = hash_str(str(datetime.now()))

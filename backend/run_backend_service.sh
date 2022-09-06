@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu/MedWasteWeb/backend
-source venv-web-medwaste/bin/activate
+cd /var/www/MedWasteWeb/backend
+source venv_backend/bin/activate
 python3 backend-app.py

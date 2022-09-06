@@ -8,6 +8,7 @@
 /backend/static/*
 !/backend/static/.gitkeep
 /backend/__pycache__
-/backend/pycache__
+/__pycache__
 /backend/Python-3.8.10
 /backend/Python-3.8.10.tgz
+/backend/venv_backend/*
