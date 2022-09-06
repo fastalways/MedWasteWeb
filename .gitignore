@@ -1,4 +1,5 @@
 /backend/venv-web-medwaste
+/backend/venv-backend
 /backend/model/*
 !/backend/model/linux_load_model.sh
 !/backend/model/windows_load_model.ps1
@@ -6,3 +7,7 @@
 !/backend/im_cache/.gitkeep
 /backend/static/*
 !/backend/static/.gitkeep
+/backend/__pycache__
+/backend/pycache__
+/backend/Python-3.8.10
+/backend/Python-3.8.10.tgz
