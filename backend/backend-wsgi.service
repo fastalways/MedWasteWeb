@@ -6,8 +6,8 @@ After=network.target
 User=gorn
 Group=www-data
 WorkingDirectory=/var/www/MedWasteWeb/backend
-Environment="PATH=/var/www/MedWasteWeb/backend/venv"
-ExecStart=/var/www/MedWasteWeb/backend/venv/bin/uwsgi --ini MedWasteAPI.ini
+Environment="PATH=/var/www/MedWasteWeb/backend/venv-backend"
+ExecStart=/var/www/MedWasteWeb/backend/venv-backend/bin/uwsgi --ini MedWasteAPI.ini
 
 [Install]
 WantedBy=multi-user.target
