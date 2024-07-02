@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve MedWasteAPI
+After=network.target
+
+[Service]
+User=gorn
+Group=www-data
+WorkingDirectory=/var/www/MedWasteWeb/backend
+Environment="PATH=/var/www/MedWasteWeb/backend/venv"
+ExecStart=/var/www/MedWasteWeb/backend/venv/bin/uwsgi --ini MedWasteAPI.ini
+
+[Install]
+WantedBy=multi-user.target
