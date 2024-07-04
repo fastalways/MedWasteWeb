@@ -103,7 +103,7 @@ def predictYolov4_41classes(im_path):
     cv.imwrite(result_filepath,img)
     if(len(predict_probs)>=2):
         predict_probs = predict_probs[:-1]
-    return_msg = '{"'+ "https://medwaste-ai.gezdev.com/" + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
+    return_msg = '{"'+ "https://medwaste-api.gezdev.com/" + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
     print(return_msg)
     return json.dumps(json.loads(return_msg), indent=4)
 
