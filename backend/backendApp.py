@@ -9,6 +9,7 @@ from tensorflow.keras.applications.efficientnet import preprocess_input, decode_
 from tensorflow.keras.preprocessing import image
 import numpy as np
 import cv2 as cv
+from PIL import Image
 import hashlib
 import json
 
@@ -71,7 +72,7 @@ def show_index():
 </html>"""
     return str
 
-ALLOWED_EXTENSIONS = set(['bmp', 'png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['bmp', 'png', 'jpg', 'jpeg', 'webp'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -102,7 +103,7 @@ def predictYolov4_41classes(im_path):
     cv.imwrite(result_filepath,img)
     if(len(predict_probs)>=2):
         predict_probs = predict_probs[:-1]
-    return_msg = '{"'+ request.url_root[:-1] + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
+    return_msg = '{"'+ "https://medwaste-ai.gezdev.com/" + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
     print(return_msg)
     return json.dumps(json.loads(return_msg), indent=4)
 
@@ -128,6 +129,12 @@ def yolov4_41():
         filename = secure_filename(file.filename)
         im_path = os.path.join(app.config['im_cache_path'], filename)
         file.save(im_path)
+        # if file is webp, convert to png
+        if im_path[-4:] == 'webp':
+            im = Image.open(im_path).convert("RGB")
+            im.save(im_path[:-4]+'.png', "PNG")
+            os.remove(im_path)
+            im_path = im_path[:-4]+'.png'
         #predict_message = predictYolov4_41classes(im_path) # for debug
         try:
             predict_message = predictYolov4_41classes(im_path)
@@ -183,6 +190,12 @@ def classify41():
         filename = secure_filename(file.filename)
         im_path = os.path.join(app.config['im_cache_path'], filename)
         file.save(im_path)
+        # if file is webp, convert to png
+        if im_path[-4:] == 'webp':
+            im = Image.open(im_path).convert("RGB")
+            im.save(im_path[:-4]+'.png', "PNG")
+            os.remove(im_path)
+            im_path = im_path[:-4]+'.png'
         #predict_message = predictClassify_41classes(im_path) # for debug
         try:
             predict_message = predictClassify_41classes(im_path)
@@ -238,6 +251,12 @@ def classify4G():
         filename = secure_filename(file.filename)
         im_path = os.path.join(app.config['im_cache_path'], filename)
         file.save(im_path)
+        # if file is webp, convert to png
+        if im_path[-4:] == 'webp':
+            im = Image.open(im_path).convert("RGB")
+            im.save(im_path[:-4]+'.png', "PNG")
+            os.remove(im_path)
+            im_path = im_path[:-4]+'.png'
         #predict_message = predictClassify_41classes(im_path) # for debug
         try:
             predict_message = predictClassify_4G(im_path)
