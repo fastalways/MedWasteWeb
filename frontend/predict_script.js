@@ -30,7 +30,7 @@ readImage_class41 = (file) => {
 	var formData = new FormData();
 	formData.append('file', file);
 	$.ajax({
-		   url : 'https://medwaste-api.gezdev.com/class41',
+		   url : 'https://medwaste-api.coecore.com/class41',
 		   type : 'POST',
 		   data : formData,
 		   processData: false,  // tell jQuery not to process the data
@@ -80,7 +80,7 @@ readImage_class4G = (file) => {
 	var formData = new FormData();
 	formData.append('file', file);
 	$.ajax({
-		   url : 'https://medwaste-api.gezdev.com/class4G',
+		   url : 'https://medwaste-api.coecore.com/class4G',
 		   type : 'POST',
 		   data : formData,
 		   processData: false,  // tell jQuery not to process the data
@@ -128,7 +128,7 @@ readImage_yolov4_41 = (file) => {
 	var formData = new FormData();
 	formData.append('file', file);
 	$.ajax({
-		   url : 'https://medwaste-api.gezdev.com/yolov4_41',
+		   url : 'https://medwaste-api.coecore.com/yolov4_41',
 		   type : 'POST',
 		   data : formData,
 		   processData: false,  // tell jQuery not to process the data
