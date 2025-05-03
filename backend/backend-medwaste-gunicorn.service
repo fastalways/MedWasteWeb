@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=gorn
-Group=www-data
+Group=nginx
 WorkingDirectory=/var/www/MedWasteWeb/backend
 Environment="PATH=/var/www/MedWasteWeb/backend/venv-backend"
 ExecStart=/var/www/MedWasteWeb/backend/venv-backend/bin/gunicorn --workers 1 --bind unix:gunicorn-medwaste.sock -m 007 backendWsgi:app
