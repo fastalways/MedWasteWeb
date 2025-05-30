@@ -43,15 +43,15 @@ COLORS = np.random.uniform(0, 255, size=(len(class_names_41classes), 3))
 
 app = Flask(__name__,static_url_path='/static')
 #app.config['SECRET_KEY'] = 'Lady Gaga, Bradley Cooper - Shallow (from A Star Is Born) (Official Music Video)'
-#cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.gezdev.com/"}})
-#app.config['CORS_ORIGINS'] = ['https://medwaste-ai.gezdev.com']
+#cors = CORS(app, resources={r"/*": {"origins": "https://medwaste-ai.coecore.com/"}})
+#app.config['CORS_ORIGINS'] = ['https://medwaste-ai.coecore.com']
 #app.config['CORS_HEADERS'] = 'Content-Type'
 #cors = CORS(app)
 app.config['JSON_SORT_KEYS'] = False
 #CORS(app)
 
 @app.route('/')
-#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+#@cross_origin(origin='https://medwaste-ai.coecore.com',headers=['Content-Type','Authorization'])
 #@cross_origin(origin='*')
 def show_index():
     str =  """<!DOCTYPE html>
@@ -103,13 +103,13 @@ def predictYolov4_41classes(im_path):
     cv.imwrite(result_filepath,img)
     if(len(predict_probs)>=2):
         predict_probs = predict_probs[:-1]
-    return_msg = '{"'+ "https://medwaste-api.gezdev.com/" + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
+    return_msg = '{"'+ "https://medwaste-api.coecore.com/" + url_for('static', filename=time_now_hash+'pred.png')+'":' + '[' + predict_probs + ']}'
     print(return_msg)
     return json.dumps(json.loads(return_msg), indent=4)
 
 
 @app.route('/yolov4_41', methods=['POST'])
-#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+#@cross_origin(origin='https://medwaste-ai.coecore.com',headers=['Content-Type','Authorization'])
 #@cross_origin(origin='*')
 def yolov4_41():
     im_path = ''
@@ -170,7 +170,7 @@ def predictClassify_41classes(im_path):
 
 
 @app.route('/class41', methods=['POST'])
-#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+#@cross_origin(origin='https://medwaste-ai.coecore.com',headers=['Content-Type','Authorization'])
 #@cross_origin(origin='*')
 def classify41():
     im_path = ''
@@ -231,7 +231,7 @@ def predictClassify_4G(im_path):
 
 
 @app.route('/class4G', methods=['POST'])
-#@cross_origin(origin='https://medwaste-ai.gezdev.com',headers=['Content-Type','Authorization'])
+#@cross_origin(origin='https://medwaste-ai.coecore.com',headers=['Content-Type','Authorization'])
 #@cross_origin(origin='*')
 def classify4G():
     im_path = ''
